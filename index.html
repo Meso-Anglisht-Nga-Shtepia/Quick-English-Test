@@ -7,92 +7,156 @@
   <style>
     :root {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background-color: #f4f5fb;
-      color: #222;
+      background: radial-gradient(circle at top, #e0f2fe 0, #eef2ff 30%, #f9fafb 65%, #f3f4f6 100%);
+      color: #111827;
+    }
+    * {
+      box-sizing: border-box;
     }
     body {
       margin: 0;
+      min-height: 100vh;
       display: flex;
       justify-content: center;
-      padding: 20px;
+      padding: 24px 16px;
     }
     .container {
-      max-width: 800px;
+      max-width: 900px;
       width: 100%;
-      background: #fff;
-      padding: 24px 20px 32px;
-      border-radius: 18px;
-      box-shadow: 0 14px 35px rgba(0,0,0,0.08);
+      background: #ffffffcc;
+      backdrop-filter: blur(10px);
+      padding: 26px 22px 30px;
+      border-radius: 22px;
+      box-shadow:
+        0 24px 60px rgba(15, 23, 42, 0.18),
+        0 0 0 1px rgba(148, 163, 184, 0.33);
     }
-    h1 {
-      margin-top: 0;
-      font-size: 1.7rem;
+    header {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 18px;
       text-align: center;
     }
-    h2 {
-      font-size: 1.2rem;
-      margin-bottom: 0.25rem;
+    header h1 {
+      margin: 0;
+      font-size: 1.9rem;
+      letter-spacing: -0.03em;
     }
-    p {
-      line-height: 1.5;
+    header p {
+      margin: 0;
+      font-size: 0.95rem;
+      color: #6b7280;
     }
+    .pill-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .pill {
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      background: #eef2ff;
+      color: #4338ca;
+      border: 1px solid #c7d2fe;
+    }
+    .pill.secondary {
+      background: #ecfeff;
+      color: #0f766e;
+      border-color: #a5f3fc;
+    }
+
     .section {
-      margin-bottom: 24px;
-      padding-bottom: 16px;
-      border-bottom: 1px solid #e1e3f0;
+      margin-bottom: 26px;
+      padding: 18px 16px 18px;
+      border-radius: 16px;
+      border: 1px solid #e5e7eb;
+      background: #f9fafb;
     }
-    .section:last-of-type {
-      border-bottom: none;
-      margin-bottom: 0;
+    .section-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin: 0 0 4px;
+    }
+    .section-subtitle {
+      margin: 0 0 10px;
+      font-size: 0.9rem;
+      color: #6b7280;
     }
     label {
       display: block;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       margin-bottom: 4px;
       font-weight: 600;
+      color: #374151;
     }
     input[type="text"],
     input[type="email"] {
       width: 100%;
-      padding: 10px 12px;
-      border-radius: 8px;
-      border: 1px solid #cdd2f0;
-      font-size: 0.95rem;
-      box-sizing: border-box;
+      padding: 9px 11px;
+      border-radius: 10px;
+      border: 1px solid #cbd5f5;
+      font-size: 0.94rem;
+      background: #f9fafb;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
     }
     input[type="text"]:focus,
     input[type="email"]:focus {
       outline: none;
       border-color: #4f46e5;
       box-shadow: 0 0 0 2px rgba(79,70,229,0.18);
+      background: #ffffff;
+    }
+    .field-group {
+      margin-bottom: 10px;
+    }
+    .hint {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 2px;
+    }
+
+    .btn-row {
+      display: flex;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
     }
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 10px 18px;
+      padding: 9px 18px;
       border-radius: 999px;
       border: none;
-      font-size: 0.98rem;
+      font-size: 0.95rem;
       font-weight: 600;
       cursor: pointer;
-      transition: transform 0.05s ease, box-shadow 0.05s ease, background 0.15s ease;
+      transition: transform 0.05s ease, box-shadow 0.05s ease, background 0.15s ease, opacity 0.15s ease;
       user-select: none;
-      gap: 6px;
+      gap: 7px;
+      white-space: nowrap;
     }
     .btn-primary {
-      background: #4f46e5;
+      background: linear-gradient(135deg, #4f46e5, #6366f1);
       color: #fff;
-      box-shadow: 0 10px 20px rgba(79,70,229,0.35);
+      box-shadow: 0 14px 28px rgba(79,70,229,0.35);
     }
     .btn-primary:hover {
-      background: #4338ca;
-      box-shadow: 0 12px 22px rgba(67,56,202,0.4);
+      background: linear-gradient(135deg, #4338ca, #4f46e5);
       transform: translateY(-1px);
+      box-shadow: 0 18px 34px rgba(79,70,229,0.4);
     }
     .btn-primary:active {
       transform: translateY(0);
-      box-shadow: 0 6px 14px rgba(79,70,229,0.25);
+      box-shadow: 0 8px 18px rgba(79,70,229,0.28);
     }
     .btn-secondary {
       background: #e5e7eb;
@@ -101,74 +165,174 @@
     .btn-secondary:hover {
       background: #d1d5db;
     }
-    .question-card {
-      border-radius: 12px;
-      border: 1px solid #e5e7f6;
-      padding: 14px 14px 10px;
-      margin-bottom: 14px;
-      background: #fafbff;
+    .btn-ghost {
+      background: transparent;
+      color: #4b5563;
+      border: 1px solid #e5e7eb;
     }
-    .question-text {
-      font-weight: 600;
-      margin-bottom: 8px;
+    .btn-ghost:hover {
+      background: #f3f4f6;
     }
-    .options {
-      margin-left: 4px;
-    }
-    .options label {
-      font-weight: 400;
-    }
-    .options div {
-      margin-bottom: 4px;
-    }
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 3px 10px;
-      border-radius: 999px;
-      font-size: 0.7rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      background: #eef2ff;
-      color: #3730a3;
-      margin-left: 6px;
-    }
-    .hidden {
-      display: none;
-    }
+
     .error {
       color: #b91c1c;
-      font-size: 0.9rem;
+      font-size: 0.86rem;
       margin-top: 6px;
     }
-    .result-box {
-      border-radius: 14px;
-      padding: 14px 14px 4px;
+    .hidden {
+      display: none !important;
+    }
+
+    /* Quiz layout */
+    #quiz-section {
+      background: #fefefe;
+    }
+    .progress-wrapper {
+      margin-bottom: 12px;
+    }
+    .progress-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+      color: #6b7280;
+      margin-bottom: 4px;
+    }
+    #progress-label {
+      font-weight: 600;
+      color: #4b5563;
+    }
+    .progress-bar-track {
+      width: 100%;
+      height: 9px;
+      border-radius: 999px;
+      background: #e5e7eb;
+      overflow: hidden;
+      position: relative;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #4f46e5, #22c55e, #facc15);
+      background-size: 200% 100%;
+      border-radius: 999px;
+      transition: width 0.2s ease-out, transform 0.2s ease-out;
+    }
+
+    .question-shell {
+      padding: 14px 13px;
+      border-radius: 16px;
       background: #f9fafb;
-      border: 1px solid #e5e7eb;
-      margin-top: 10px;
-      margin-bottom: 16px;
+      border: 1px solid #e5e7f6;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    #question-number {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: #6b7280;
+      font-weight: 700;
+    }
+    #question-text {
+      font-size: 1.02rem;
+      font-weight: 600;
+      color: #111827;
+    }
+    .options {
+      margin-top: 6px;
+      display: grid;
+      gap: 6px;
+    }
+    .option-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 7px;
+      padding: 7px 9px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      background: #ffffff;
+      cursor: pointer;
+      transition: border-color 0.12s ease, background 0.12s ease, box-shadow 0.12s ease, transform 0.05s ease;
+    }
+    .option-row:hover {
+      border-color: #c7d2fe;
+      background: #eef2ff;
+      box-shadow: 0 4px 12px rgba(148,163,184,0.3);
+      transform: translateY(-0.5px);
+    }
+    .option-row input {
+      margin-top: 2px;
+      cursor: pointer;
+    }
+    .option-label-text {
+      font-size: 0.95rem;
+      color: #111827;
+      cursor: pointer;
+    }
+    .option-row.selected {
+      border-color: #4f46e5;
+      background: #eef2ff;
+      box-shadow: 0 6px 16px rgba(79,70,229,0.25);
+    }
+
+    .quiz-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 14px;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .step-hint {
+      font-size: 0.8rem;
+      color: #9ca3af;
+    }
+
+    /* Result section */
+    #result-section {
+      background: #fefce8;
+      border-color: #facc15;
+    }
+    .result-box {
+      border-radius: 16px;
+      padding: 14px 14px 8px;
+      background: #fffbeb;
+      border: 1px solid #fed7aa;
+      margin-top: 8px;
+      margin-bottom: 14px;
     }
     .result-level {
-      font-size: 1.3rem;
-      font-weight: 700;
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
     }
     .result-level span {
       font-size: 0.9rem;
       font-weight: 500;
       color: #4b5563;
     }
+    #result-summary {
+      margin: 6px 0 6px;
+      font-size: 0.98rem;
+      color: #374151;
+    }
+    #result-meta {
+      font-size: 0.82rem;
+      color: #6b7280;
+    }
+
     .answers-table {
       width: 100%;
       border-collapse: collapse;
       font-size: 0.9rem;
+      margin-top: 8px;
     }
     .answers-table th,
     .answers-table td {
       border: 1px solid #e5e7eb;
-      padding: 6px 8px;
+      padding: 5px 6px;
       vertical-align: top;
     }
     .answers-table th {
@@ -187,83 +351,136 @@
       color: #6b7280;
       font-size: 0.85rem;
     }
+
     .footer-note {
       margin-top: 20px;
       text-align: center;
       font-size: 0.78rem;
       color: #9ca3af;
     }
+
     @media (max-width: 640px) {
       .container {
-        padding: 18px 14px 20px;
+        padding: 20px 14px 24px;
       }
-      h1 {
-        font-size: 1.4rem;
+      header h1 {
+        font-size: 1.5rem;
+      }
+      .section {
+        padding: 14px 12px 16px;
       }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>
-      10-Question English Level Test
-      <span class="badge">Pilot • A1–C2</span>
-    </h1>
+    <header>
+      <h1>10-Question English Level Check</h1>
+      <p>Fast mini-test to estimate your CEFR level (A1–C2).</p>
+      <div class="pill-row">
+        <div class="pill">Takes ~3–5 minutes</div>
+        <div class="pill secondary">See results instantly</div>
+      </div>
+    </header>
 
     <!-- LOGIN SECTION -->
-    <div id="login-section" class="section">
-      <h2>Step 1 · Your Details</h2>
-      <p class="muted">
-        Please enter your name and email. At the end, you will see your score and estimated CEFR level (A1–C2).
+    <section id="login-section" class="section">
+      <h2 class="section-title">Step 1 · Tell us who you are</h2>
+      <p class="section-subtitle">
+        Enter your details so we can record your result and send you follow-up materials if needed.
       </p>
-      <label for="username">Full name</label>
-      <input type="text" id="username" placeholder="e.g. Maria Rossi" />
 
-      <label for="email" style="margin-top: 10px;">Email address</label>
-      <input type="email" id="email" placeholder="e.g. maria@example.com" />
+      <div class="field-group">
+        <label for="username">Full name</label>
+        <input type="text" id="username" placeholder="e.g. Maria Rossi" />
+        <div class="hint">Use the name you’d like to appear in your report.</div>
+      </div>
+
+      <div class="field-group">
+        <label for="email">Email address</label>
+        <input type="email" id="email" placeholder="e.g. maria@example.com" />
+        <div class="hint">We keep your email private. It’s only used to track your result.</div>
+      </div>
 
       <div id="login-error" class="error hidden"></div>
 
-      <div style="margin-top: 14px;">
-        <button id="start-btn" class="btn btn-primary">Start Test →</button>
+      <div class="btn-row">
+        <button id="start-btn" class="btn btn-primary">
+          Start the test
+          <span>→</span>
+        </button>
       </div>
-    </div>
+    </section>
 
     <!-- QUIZ SECTION -->
-    <div id="quiz-section" class="section hidden">
-      <h2>Step 2 · Answer the Questions</h2>
-      <p class="muted">
-        Choose the best answer for each question. There is only one correct option per question.
+    <section id="quiz-section" class="section hidden">
+      <h2 class="section-title">Step 2 · Answer the questions</h2>
+      <p class="section-subtitle">
+        Choose the best answer for each question. There is only one correct option.
       </p>
-      <form id="quiz-form"></form>
+
+      <div class="progress-wrapper">
+        <div class="progress-top">
+          <span id="progress-label">Question 1 of 10</span>
+          <span id="progress-percent">0%</span>
+        </div>
+        <div class="progress-bar-track">
+          <div id="progress-bar" class="progress-bar-fill"></div>
+        </div>
+      </div>
+
+      <div class="question-shell">
+        <div id="question-number">Question 1</div>
+        <div id="question-text">Loading question…</div>
+        <div id="options-container" class="options"></div>
+      </div>
 
       <div id="quiz-error" class="error hidden"></div>
 
-      <div style="margin-top: 12px;">
-        <button type="button" id="submit-btn" class="btn btn-primary">Submit Test</button>
-        <button type="button" id="reset-btn" class="btn btn-secondary" style="margin-left: 6px;">Start Over</button>
+      <div class="quiz-footer">
+        <div class="step-hint">
+          Tip: you can change your answers at any time before submitting.
+        </div>
+        <div class="btn-row">
+          <button type="button" id="prev-btn" class="btn btn-ghost hidden">
+            ← Previous
+          </button>
+          <button type="button" id="next-btn" class="btn btn-primary">
+            Next question →
+          </button>
+        </div>
       </div>
-    </div>
+    </section>
 
     <!-- RESULT SECTION -->
-    <div id="result-section" class="section hidden">
-      <h2>Step 3 · Your Result</h2>
+    <section id="result-section" class="section hidden">
+      <h2 class="section-title">Step 3 · Your result</h2>
+      <p class="section-subtitle">
+        Here is your score, estimated CEFR level, and detailed answer breakdown.
+      </p>
+
       <div class="result-box">
         <div class="result-level" id="result-level"></div>
         <p id="result-summary"></p>
-        <p class="muted" id="result-meta"></p>
+        <p id="result-meta"></p>
       </div>
 
-      <h3 style="margin-top: 10px;">Correct Answers &amp; Feedback</h3>
+      <h3 style="margin: 6px 0 4px; font-size: 1rem;">Correct answers & feedback</h3>
       <p class="muted">
-        Green = correct, Red = incorrect. This is only a very short screening test, not a full placement exam.
+        Green = correct, Red = incorrect. This is a short screening test, not a full placement exam.
       </p>
       <div id="answer-breakdown"></div>
 
       <p class="muted" style="margin-top: 10px;">
         Your result has been recorded securely together with your name, email, and test date.
       </p>
-    </div>
+
+      <div class="btn-row" style="justify-content: flex-end; margin-top: 12px;">
+        <button type="button" id="restart-btn" class="btn btn-secondary">
+          Take the test again
+        </button>
+      </div>
+    </section>
 
     <div class="footer-note">
       © <span id="year"></span> English Level Mini Test · Data stored via Google Sheets
@@ -271,18 +488,18 @@
   </div>
 
   <script>
-    // === CONFIG: PUT YOUR GOOGLE APPS SCRIPT WEB APP URL HERE ===
-    const GOOGLE_SCRIPT_URL = "YOUR_WEB_APP_URL_HERE"; // <-- REPLACE THIS
+    // === Your Google Apps Script Web App URL ===
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw6myuIEq7h43viSMdsXQ2kVaq8CSI--JqOSZ08DeqkS8CZPh0bdSuVpodkdU11W5UC/exec";
 
-    // === SIMPLE 10-QUESTION TEST BANK ===
+    // === 10-QUESTION TEST BANK ===
     const QUESTIONS = [
       {
-        text: "1. Choose the correct option: “She ____ to the gym every morning.”",
+        text: "Choose the correct option: “She ____ to the gym every morning.”",
         options: ["go", "is going", "goes", "going"],
         correctIndex: 2
       },
       {
-        text: "2. Which sentence is correct?",
+        text: "Which sentence is correct?",
         options: [
           "I am agree with you.",
           "I agree with you.",
@@ -292,22 +509,22 @@
         correctIndex: 1
       },
       {
-        text: "3. Complete the sentence: “If it ____ tomorrow, we will stay at home.”",
+        text: "Complete the sentence: “If it ____ tomorrow, we will stay at home.”",
         options: ["will rain", "rains", "is raining", "rain"],
         correctIndex: 1
       },
       {
-        text: "4. Which word best completes the sentence? “I’m really looking forward ____ you.”",
+        text: "Which word best completes the sentence? “I’m really looking forward ____ you.”",
         options: ["to see", "to seeing", "seeing to", "see to"],
         correctIndex: 1
       },
       {
-        text: "5. Choose the best option: “By this time tomorrow, I ____ my presentation.”",
+        text: "Choose the best option: “By this time tomorrow, I ____ my presentation.”",
         options: ["will finish", "will have finished", "am finishing", "have finished"],
         correctIndex: 1
       },
       {
-        text: "6. Which sentence sounds the most natural?",
+        text: "Which sentence sounds the most natural?",
         options: [
           "Despite of the rain, we went out.",
           "In spite the rain, we went out.",
@@ -317,17 +534,17 @@
         correctIndex: 3
       },
       {
-        text: "7. Choose the best option: “If I ____ more time, I would learn another language.”",
+        text: "Choose the best option: “If I ____ more time, I would learn another language.”",
         options: ["have", "had", "would have", "will have"],
         correctIndex: 1
       },
       {
-        text: "8. Choose the correct word: “This book is very ____ ; I can’t stop reading it.”",
+        text: "Choose the correct word: “This book is very ____ ; I can’t stop reading it.”",
         options: ["boring", "bored", "interesting", "interested"],
         correctIndex: 2
       },
       {
-        text: "9. Select the most appropriate sentence:",
+        text: "Select the most appropriate sentence:",
         options: [
           "Hardly I had arrived when it started to rain.",
           "Hardly had I arrived when it started to rain.",
@@ -337,13 +554,13 @@
         correctIndex: 1
       },
       {
-        text: "10. Choose the best option: “He denied ____ the document.”",
+        text: "Choose the best option: “He denied ____ the document.”",
         options: ["to sign", "sign", "signing", "to signing"],
         correctIndex: 2
       }
     ];
 
-    // Map raw score → CEFR band (simple rough mapping for 10 questions)
+    // Map raw score → CEFR band (simple mapping for 10 questions)
     function scoreToBand(score) {
       if (score <= 2) return "A1";
       if (score <= 4) return "A2";
@@ -372,16 +589,27 @@
       }
     }
 
-    // === DOM ELEMENTS ===
+    // DOM elements
     const loginSection = document.getElementById("login-section");
     const quizSection = document.getElementById("quiz-section");
     const resultSection = document.getElementById("result-section");
+
     const loginError = document.getElementById("login-error");
     const quizError = document.getElementById("quiz-error");
-    const quizForm = document.getElementById("quiz-form");
+
     const startBtn = document.getElementById("start-btn");
-    const submitBtn = document.getElementById("submit-btn");
-    const resetBtn = document.getElementById("reset-btn");
+    const prevBtn = document.getElementById("prev-btn");
+    const nextBtn = document.getElementById("next-btn");
+    const restartBtn = document.getElementById("restart-btn");
+
+    const questionNumberEl = document.getElementById("question-number");
+    const questionTextEl = document.getElementById("question-text");
+    const optionsContainer = document.getElementById("options-container");
+
+    const progressLabel = document.getElementById("progress-label");
+    const progressPercent = document.getElementById("progress-percent");
+    const progressBar = document.getElementById("progress-bar");
+
     const resultLevel = document.getElementById("result-level");
     const resultSummary = document.getElementById("result-summary");
     const resultMeta = document.getElementById("result-meta");
@@ -389,95 +617,87 @@
 
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // === RENDER QUESTIONS ===
-    function renderQuestions() {
-      quizForm.innerHTML = "";
-      QUESTIONS.forEach((q, index) => {
-        const card = document.createElement("div");
-        card.className = "question-card";
+    let currentIndex = 0;
+    const userAnswers = new Array(QUESTIONS.length).fill(null);
 
-        const qText = document.createElement("div");
-        qText.className = "question-text";
-        qText.textContent = q.text;
-        card.appendChild(qText);
-
-        const optionsDiv = document.createElement("div");
-        optionsDiv.className = "options";
-
-        q.options.forEach((opt, optIndex) => {
-          const optionWrapper = document.createElement("div");
-
-          const id = `q${index}_opt${optIndex}`;
-          const input = document.createElement("input");
-          input.type = "radio";
-          input.name = `q${index}`;
-          input.value = String(optIndex);
-          input.id = id;
-
-          const label = document.createElement("label");
-          label.setAttribute("for", id);
-          label.textContent = opt;
-
-          optionWrapper.appendChild(input);
-          optionWrapper.appendChild(label);
-          optionsDiv.appendChild(optionWrapper);
-        });
-
-        card.appendChild(optionsDiv);
-        quizForm.appendChild(card);
-      });
+    function scrollTopSmooth() {
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
-    // === EVENT HANDLERS ===
-    startBtn.addEventListener("click", () => {
-      const name = document.getElementById("username").value.trim();
-      const email = document.getElementById("email").value.trim();
+    function renderQuestion() {
+      const q = QUESTIONS[currentIndex];
 
-      loginError.classList.add("hidden");
-      loginError.textContent = "";
+      questionNumberEl.textContent = `Question ${currentIndex + 1}`;
+      questionTextEl.textContent = q.text;
 
-      if (!name || !email) {
-        loginError.textContent = "Please enter both your name and email address.";
-        loginError.classList.remove("hidden");
-        return;
-      }
+      optionsContainer.innerHTML = "";
+      q.options.forEach((opt, idx) => {
+        const row = document.createElement("label");
+        row.className = "option-row";
+        row.dataset.index = idx;
 
-      // basic email check
-      if (!email.includes("@") || !email.includes(".")) {
-        loginError.textContent = "Please enter a valid email address.";
-        loginError.classList.remove("hidden");
-        return;
-      }
+        const input = document.createElement("input");
+        input.type = "radio";
+        input.name = "current-question";
+        input.value = String(idx);
 
-      renderQuestions();
-      loginSection.classList.add("hidden");
-      quizSection.classList.remove("hidden");
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    });
+        const span = document.createElement("span");
+        span.className = "option-label-text";
+        span.textContent = opt;
 
-    submitBtn.addEventListener("click", () => {
-      quizError.classList.add("hidden");
-      quizError.textContent = "";
+        row.appendChild(input);
+        row.appendChild(span);
+        optionsContainer.appendChild(row);
 
-      const userAnswers = [];
-      let unanswered = 0;
-
-      QUESTIONS.forEach((q, index) => {
-        const selected = document.querySelector(`input[name="q${index}"]:checked`);
-        if (!selected) {
-          unanswered++;
-          userAnswers.push(null);
-        } else {
-          userAnswers.push(Number(selected.value));
+        // Restore previously selected answer
+        if (userAnswers[currentIndex] === idx) {
+          input.checked = true;
+          row.classList.add("selected");
         }
+
+        // Click behaviour: select row
+        row.addEventListener("click", (e) => {
+          // avoid double toggling from input
+          const rows = document.querySelectorAll(".option-row");
+          rows.forEach(r => r.classList.remove("selected"));
+          row.classList.add("selected");
+          input.checked = true;
+        });
       });
 
-      if (unanswered > 0) {
-        quizError.textContent = "Please answer all the questions before submitting.";
-        quizError.classList.remove("hidden");
-        return;
+      // Progress info
+      const total = QUESTIONS.length;
+      const percent = Math.round((currentIndex / total) * 100);
+      progressLabel.textContent = `Question ${currentIndex + 1} of ${total}`;
+      progressPercent.textContent = `${percent}%`;
+      progressBar.style.width = `${percent}%`;
+      progressBar.style.transform = `translateX(${(percent / 100) * 5}px)`; // small animated feel
+
+      // Buttons
+      prevBtn.classList.toggle("hidden", currentIndex === 0);
+      if (currentIndex === total - 1) {
+        nextBtn.textContent = "Submit test →";
+      } else {
+        nextBtn.textContent = "Next question →";
       }
 
+      quizError.classList.add("hidden");
+      quizError.textContent = "";
+    }
+
+    function validateAndStoreAnswer() {
+      const selectedInput = document.querySelector('input[name="current-question"]:checked');
+      if (!selectedInput) {
+        quizError.textContent = "Please select an answer before continuing.";
+        quizError.classList.remove("hidden");
+        return false;
+      }
+      const idx = Number(selectedInput.value);
+      userAnswers[currentIndex] = idx;
+      return true;
+    }
+
+    function showResult() {
       // Calculate score
       let correctCount = 0;
       QUESTIONS.forEach((q, i) => {
@@ -515,7 +735,7 @@
         tr.appendChild(numCell);
 
         const qCell = document.createElement("td");
-        qCell.textContent = q.text.replace(/^\d+\.\s*/, ""); // remove "1." etc
+        qCell.textContent = q.text;
         tr.appendChild(qCell);
 
         const yourCell = document.createElement("td");
@@ -543,12 +763,14 @@
       answerBreakdown.innerHTML = "";
       answerBreakdown.appendChild(table);
 
-      // Show result section
+      // Sections visibility
+      quizSection.classList.add("hidden");
       resultSection.classList.remove("hidden");
-      window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+      scrollTopSmooth();
 
       // Send data to Google Sheets via Apps Script
-      const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw6myuIEq7h43viSMdsXQ2kVaq8CSI--JqOSZ08DeqkS8CZPh0bdSuVpodkdU11W5UC/exec";
+      if (GOOGLE_SCRIPT_URL) {
+        const formData = new FormData();
         formData.append("name", name);
         formData.append("email", email);
         formData.append("score", String(correctCount));
@@ -557,7 +779,6 @@
         formData.append("band", band);
         formData.append("dateISO", testDate.toISOString());
 
-        // We don't need to read the response, we just fire-and-forget
         fetch(GOOGLE_SCRIPT_URL, {
           method: "POST",
           mode: "no-cors",
@@ -568,13 +789,60 @@
       } else {
         console.warn("No Google Script URL configured – results not logged.");
       }
+    }
+
+    // Event handlers
+    startBtn.addEventListener("click", () => {
+      const name = document.getElementById("username").value.trim();
+      const email = document.getElementById("email").value.trim();
+
+      loginError.classList.add("hidden");
+      loginError.textContent = "";
+
+      if (!name || !email) {
+        loginError.textContent = "Please enter both your name and email address.";
+        loginError.classList.remove("hidden");
+        return;
+      }
+
+      if (!email.includes("@") || !email.includes(".")) {
+        loginError.textContent = "Please enter a valid email address.";
+        loginError.classList.remove("hidden");
+        return;
+      }
+
+      // Move to quiz
+      loginSection.classList.add("hidden");
+      quizSection.classList.remove("hidden");
+      currentIndex = 0;
+      renderQuestion();
+      scrollTopSmooth();
     });
 
-    resetBtn.addEventListener("click", () => {
-      // Simple reset: reload page
+    nextBtn.addEventListener("click", () => {
+      if (!validateAndStoreAnswer()) return;
+
+      if (currentIndex === QUESTIONS.length - 1) {
+        // Submit
+        showResult();
+      } else {
+        currentIndex++;
+        renderQuestion();
+        scrollTopSmooth();
+      }
+    });
+
+    prevBtn.addEventListener("click", () => {
+      if (currentIndex > 0) {
+        currentIndex--;
+        renderQuestion();
+        scrollTopSmooth();
+      }
+    });
+
+    restartBtn.addEventListener("click", () => {
       window.location.reload();
     });
   </script>
 </body>
 </html>
-

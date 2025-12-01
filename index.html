@@ -548,8 +548,7 @@
       window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
 
       // Send data to Google Sheets via Apps Script
-      if (GOOGLE_SCRIPT_URL && GOOGLE_SCRIPT_URL !== "https://script.google.com/macros/s/AKfycbw6myuIEq7h43viSMdsXQ2kVaq8CSI--JqOSZ08DeqkS8CZPh0bdSuVpodkdU11W5UC/exec") {
-        const formData = new FormData();
+      const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw6myuIEq7h43viSMdsXQ2kVaq8CSI--JqOSZ08DeqkS8CZPh0bdSuVpodkdU11W5UC/exec";
         formData.append("name", name);
         formData.append("email", email);
         formData.append("score", String(correctCount));
@@ -578,3 +577,4 @@
   </script>
 </body>
 </html>
+

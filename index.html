@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>English Level Mini Test (A1–C2)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background-color: #f4f5fb;
+      color: #222;
+    }
+    body {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      padding: 20px;
+    }
+    .container {
+      max-width: 800px;
+      width: 100%;
+      background: #fff;
+      padding: 24px 20px 32px;
+      border-radius: 18px;
+      box-shadow: 0 14px 35px rgba(0,0,0,0.08);
+    }
+    h1 {
+      margin-top: 0;
+      font-size: 1.7rem;
+      text-align: center;
+    }
+    h2 {
+      font-size: 1.2rem;
+      margin-bottom: 0.25rem;
+    }
+    p {
+      line-height: 1.5;
+    }
+    .section {
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #e1e3f0;
+    }
+    .section:last-of-type {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    label {
+      display: block;
+      font-size: 0.95rem;
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+    input[type="text"],
+    input[type="email"] {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 1px solid #cdd2f0;
+      font-size: 0.95rem;
+      box-sizing: border-box;
+    }
+    input[type="text"]:focus,
+    input[type="email"]:focus {
+      outline: none;
+      border-color: #4f46e5;
+      box-shadow: 0 0 0 2px rgba(79,70,229,0.18);
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: none;
+      font-size: 0.98rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.05s ease, box-shadow 0.05s ease, background 0.15s ease;
+      user-select: none;
+      gap: 6px;
+    }
+    .btn-primary {
+      background: #4f46e5;
+      color: #fff;
+      box-shadow: 0 10px 20px rgba(79,70,229,0.35);
+    }
+    .btn-primary:hover {
+      background: #4338ca;
+      box-shadow: 0 12px 22px rgba(67,56,202,0.4);
+      transform: translateY(-1px);
+    }
+    .btn-primary:active {
+      transform: translateY(0);
+      box-shadow: 0 6px 14px rgba(79,70,229,0.25);
+    }
+    .btn-secondary {
+      background: #e5e7eb;
+      color: #111827;
+    }
+    .btn-secondary:hover {
+      background: #d1d5db;
+    }
+    .question-card {
+      border-radius: 12px;
+      border: 1px solid #e5e7f6;
+      padding: 14px 14px 10px;
+      margin-bottom: 14px;
+      background: #fafbff;
+    }
+    .question-text {
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .options {
+      margin-left: 4px;
+    }
+    .options label {
+      font-weight: 400;
+    }
+    .options div {
+      margin-bottom: 4px;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      background: #eef2ff;
+      color: #3730a3;
+      margin-left: 6px;
+    }
+    .hidden {
+      display: none;
+    }
+    .error {
+      color: #b91c1c;
+      font-size: 0.9rem;
+      margin-top: 6px;
+    }
+    .result-box {
+      border-radius: 14px;
+      padding: 14px 14px 4px;
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      margin-top: 10px;
+      margin-bottom: 16px;
+    }
+    .result-level {
+      font-size: 1.3rem;
+      font-weight: 700;
+    }
+    .result-level span {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #4b5563;
+    }
+    .answers-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    .answers-table th,
+    .answers-table td {
+      border: 1px solid #e5e7eb;
+      padding: 6px 8px;
+      vertical-align: top;
+    }
+    .answers-table th {
+      background: #f3f4f6;
+      text-align: left;
+    }
+    .correct {
+      color: #15803d;
+      font-weight: 600;
+    }
+    .incorrect {
+      color: #b91c1c;
+      font-weight: 600;
+    }
+    .muted {
+      color: #6b7280;
+      font-size: 0.85rem;
+    }
+    .footer-note {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 0.78rem;
+      color: #9ca3af;
+    }
+    @media (max-width: 640px) {
+      .container {
+        padding: 18px 14px 20px;
+      }
+      h1 {
+        font-size: 1.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>
+      10-Question English Level Test
+      <span class="badge">Pilot • A1–C2</span>
+    </h1>
+
+    <!-- LOGIN SECTION -->
+    <div id="login-section" class="section">
+      <h2>Step 1 · Your Details</h2>
+      <p class="muted">
+        Please enter your name and email. At the end, you will see your score and estimated CEFR level (A1–C2).
+      </p>
+      <label for="username">Full name</label>
+      <input type="text" id="username" placeholder="e.g. Maria Rossi" />
+
+      <label for="email" style="margin-top: 10px;">Email address</label>
+      <input type="email" id="email" placeholder="e.g. maria@example.com" />
+
+      <div id="login-error" class="error hidden"></div>
+
+      <div style="margin-top: 14px;">
+        <button id="start-btn" class="btn btn-primary">Start Test →</button>
+      </div>
+    </div>
+
+    <!-- QUIZ SECTION -->
+    <div id="quiz-section" class="section hidden">
+      <h2>Step 2 · Answer the Questions</h2>
+      <p class="muted">
+        Choose the best answer for each question. There is only one correct option per question.
+      </p>
+      <form id="quiz-form"></form>
+
+      <div id="quiz-error" class="error hidden"></div>
+
+      <div style="margin-top: 12px;">
+        <button type="button" id="submit-btn" class="btn btn-primary">Submit Test</button>
+        <button type="button" id="reset-btn" class="btn btn-secondary" style="margin-left: 6px;">Start Over</button>
+      </div>
+    </div>
+
+    <!-- RESULT SECTION -->
+    <div id="result-section" class="section hidden">
+      <h2>Step 3 · Your Result</h2>
+      <div class="result-box">
+        <div class="result-level" id="result-level"></div>
+        <p id="result-summary"></p>
+        <p class="muted" id="result-meta"></p>
+      </div>
+
+      <h3 style="margin-top: 10px;">Correct Answers &amp; Feedback</h3>
+      <p class="muted">
+        Green = correct, Red = incorrect. This is only a very short screening test, not a full placement exam.
+      </p>
+      <div id="answer-breakdown"></div>
+
+      <p class="muted" style="margin-top: 10px;">
+        Your result has been recorded securely together with your name, email, and test date.
+      </p>
+    </div>
+
+    <div class="footer-note">
+      © <span id="year"></span> English Level Mini Test · Data stored via Google Sheets
+    </div>
+  </div>
+
+  <script>
+    // === CONFIG: PUT YOUR GOOGLE APPS SCRIPT WEB APP URL HERE ===
+    const GOOGLE_SCRIPT_URL = "YOUR_WEB_APP_URL_HERE"; // <-- REPLACE THIS
+
+    // === SIMPLE 10-QUESTION TEST BANK ===
+    const QUESTIONS = [
+      {
+        text: "1. Choose the correct option: “She ____ to the gym every morning.”",
+        options: ["go", "is going", "goes", "going"],
+        correctIndex: 2
+      },
+      {
+        text: "2. Which sentence is correct?",
+        options: [
+          "I am agree with you.",
+          "I agree with you.",
+          "I am agreeing with you.",
+          "I am agreed with you."
+        ],
+        correctIndex: 1
+      },
+      {
+        text: "3. Complete the sentence: “If it ____ tomorrow, we will stay at home.”",
+        options: ["will rain", "rains", "is raining", "rain"],
+        correctIndex: 1
+      },
+      {
+        text: "4. Which word best completes the sentence? “I’m really looking forward ____ you.”",
+        options: ["to see", "to seeing", "seeing to", "see to"],
+        correctIndex: 1
+      },
+      {
+        text: "5. Choose the best option: “By this time tomorrow, I ____ my presentation.”",
+        options: ["will finish", "will have finished", "am finishing", "have finished"],
+        correctIndex: 1
+      },
+      {
+        text: "6. Which sentence sounds the most natural?",
+        options: [
+          "Despite of the rain, we went out.",
+          "In spite the rain, we went out.",
+          "Although was raining, we went out.",
+          "Despite the rain, we went out."
+        ],
+        correctIndex: 3
+      },
+      {
+        text: "7. Choose the best option: “If I ____ more time, I would learn another language.”",
+        options: ["have", "had", "would have", "will have"],
+        correctIndex: 1
+      },
+      {
+        text: "8. Choose the correct word: “This book is very ____ ; I can’t stop reading it.”",
+        options: ["boring", "bored", "interesting", "interested"],
+        correctIndex: 2
+      },
+      {
+        text: "9. Select the most appropriate sentence:",
+        options: [
+          "Hardly I had arrived when it started to rain.",
+          "Hardly had I arrived when it started to rain.",
+          "Hardly had I arrived when did it start to rain.",
+          "Hardly I had arrived when did it start to rain."
+        ],
+        correctIndex: 1
+      },
+      {
+        text: "10. Choose the best option: “He denied ____ the document.”",
+        options: ["to sign", "sign", "signing", "to signing"],
+        correctIndex: 2
+      }
+    ];
+
+    // Map raw score → CEFR band (simple rough mapping for 10 questions)
+    function scoreToBand(score) {
+      if (score <= 2) return "A1";
+      if (score <= 4) return "A2";
+      if (score <= 6) return "B1";
+      if (score <= 8) return "B2";
+      if (score === 9) return "C1";
+      return "C2"; // 10/10
+    }
+
+    function bandDescription(band) {
+      switch (band) {
+        case "A1":
+          return "You probably have a very basic level of English (beginner).";
+        case "A2":
+          return "You probably have an elementary level of English.";
+        case "B1":
+          return "You probably have a lower-intermediate / intermediate level.";
+        case "B2":
+          return "You probably have an upper-intermediate level.";
+        case "C1":
+          return "You probably have an advanced level of English.";
+        case "C2":
+          return "You probably have a very advanced / near-native level.";
+        default:
+          return "";
+      }
+    }
+
+    // === DOM ELEMENTS ===
+    const loginSection = document.getElementById("login-section");
+    const quizSection = document.getElementById("quiz-section");
+    const resultSection = document.getElementById("result-section");
+    const loginError = document.getElementById("login-error");
+    const quizError = document.getElementById("quiz-error");
+    const quizForm = document.getElementById("quiz-form");
+    const startBtn = document.getElementById("start-btn");
+    const submitBtn = document.getElementById("submit-btn");
+    const resetBtn = document.getElementById("reset-btn");
+    const resultLevel = document.getElementById("result-level");
+    const resultSummary = document.getElementById("result-summary");
+    const resultMeta = document.getElementById("result-meta");
+    const answerBreakdown = document.getElementById("answer-breakdown");
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // === RENDER QUESTIONS ===
+    function renderQuestions() {
+      quizForm.innerHTML = "";
+      QUESTIONS.forEach((q, index) => {
+        const card = document.createElement("div");
+        card.className = "question-card";
+
+        const qText = document.createElement("div");
+        qText.className = "question-text";
+        qText.textContent = q.text;
+        card.appendChild(qText);
+
+        const optionsDiv = document.createElement("div");
+        optionsDiv.className = "options";
+
+        q.options.forEach((opt, optIndex) => {
+          const optionWrapper = document.createElement("div");
+
+          const id = `q${index}_opt${optIndex}`;
+          const input = document.createElement("input");
+          input.type = "radio";
+          input.name = `q${index}`;
+          input.value = String(optIndex);
+          input.id = id;
+
+          const label = document.createElement("label");
+          label.setAttribute("for", id);
+          label.textContent = opt;
+
+          optionWrapper.appendChild(input);
+          optionWrapper.appendChild(label);
+          optionsDiv.appendChild(optionWrapper);
+        });
+
+        card.appendChild(optionsDiv);
+        quizForm.appendChild(card);
+      });
+    }
+
+    // === EVENT HANDLERS ===
+    startBtn.addEventListener("click", () => {
+      const name = document.getElementById("username").value.trim();
+      const email = document.getElementById("email").value.trim();
+
+      loginError.classList.add("hidden");
+      loginError.textContent = "";
+
+      if (!name || !email) {
+        loginError.textContent = "Please enter both your name and email address.";
+        loginError.classList.remove("hidden");
+        return;
+      }
+
+      // basic email check
+      if (!email.includes("@") || !email.includes(".")) {
+        loginError.textContent = "Please enter a valid email address.";
+        loginError.classList.remove("hidden");
+        return;
+      }
+
+      renderQuestions();
+      loginSection.classList.add("hidden");
+      quizSection.classList.remove("hidden");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    submitBtn.addEventListener("click", () => {
+      quizError.classList.add("hidden");
+      quizError.textContent = "";
+
+      const userAnswers = [];
+      let unanswered = 0;
+
+      QUESTIONS.forEach((q, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        if (!selected) {
+          unanswered++;
+          userAnswers.push(null);
+        } else {
+          userAnswers.push(Number(selected.value));
+        }
+      });
+
+      if (unanswered > 0) {
+        quizError.textContent = "Please answer all the questions before submitting.";
+        quizError.classList.remove("hidden");
+        return;
+      }
+
+      // Calculate score
+      let correctCount = 0;
+      QUESTIONS.forEach((q, i) => {
+        if (userAnswers[i] === q.correctIndex) correctCount++;
+      });
+
+      const band = scoreToBand(correctCount);
+      const percentage = Math.round((correctCount / QUESTIONS.length) * 100);
+      const name = document.getElementById("username").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const testDate = new Date();
+
+      // Show result on page
+      resultLevel.innerHTML = `Level: ${band} <span>(${correctCount} / ${QUESTIONS.length} · ${percentage}%)</span>`;
+      resultSummary.textContent = bandDescription(band);
+      resultMeta.textContent = `Name: ${name} · Email: ${email} · Test date: ${testDate.toLocaleString()}`;
+
+      // Build answer breakdown table
+      const table = document.createElement("table");
+      table.className = "answers-table";
+
+      const headerRow = document.createElement("tr");
+      ["#", "Question", "Your answer", "Correct answer"].forEach((h) => {
+        const th = document.createElement("th");
+        th.textContent = h;
+        headerRow.appendChild(th);
+      });
+      table.appendChild(headerRow);
+
+      QUESTIONS.forEach((q, i) => {
+        const tr = document.createElement("tr");
+
+        const numCell = document.createElement("td");
+        numCell.textContent = String(i + 1);
+        tr.appendChild(numCell);
+
+        const qCell = document.createElement("td");
+        qCell.textContent = q.text.replace(/^\d+\.\s*/, ""); // remove "1." etc
+        tr.appendChild(qCell);
+
+        const yourCell = document.createElement("td");
+        const correctCell = document.createElement("td");
+
+        const userIndex = userAnswers[i];
+        const correctIndex = q.correctIndex;
+
+        if (userIndex === correctIndex) {
+          yourCell.textContent = q.options[userIndex];
+          yourCell.className = "correct";
+        } else {
+          yourCell.textContent = userIndex !== null ? q.options[userIndex] : "(no answer)";
+          yourCell.className = "incorrect";
+        }
+
+        correctCell.textContent = q.options[correctIndex];
+        correctCell.className = "correct";
+
+        tr.appendChild(yourCell);
+        tr.appendChild(correctCell);
+        table.appendChild(tr);
+      });
+
+      answerBreakdown.innerHTML = "";
+      answerBreakdown.appendChild(table);
+
+      // Show result section
+      resultSection.classList.remove("hidden");
+      window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+
+      // Send data to Google Sheets via Apps Script
+      if (GOOGLE_SCRIPT_URL && GOOGLE_SCRIPT_URL !== "https://script.google.com/macros/s/AKfycbw6myuIEq7h43viSMdsXQ2kVaq8CSI--JqOSZ08DeqkS8CZPh0bdSuVpodkdU11W5UC/exec") {
+        const formData = new FormData();
+        formData.append("name", name);
+        formData.append("email", email);
+        formData.append("score", String(correctCount));
+        formData.append("total", String(QUESTIONS.length));
+        formData.append("percentage", String(percentage));
+        formData.append("band", band);
+        formData.append("dateISO", testDate.toISOString());
+
+        // We don't need to read the response, we just fire-and-forget
+        fetch(GOOGLE_SCRIPT_URL, {
+          method: "POST",
+          mode: "no-cors",
+          body: formData
+        }).catch((err) => {
+          console.error("Failed to send data to Google Sheets:", err);
+        });
+      } else {
+        console.warn("No Google Script URL configured – results not logged.");
+      }
+    });
+
+    resetBtn.addEventListener("click", () => {
+      // Simple reset: reload page
+      window.location.reload();
+    });
+  </script>
+</body>
+</html>

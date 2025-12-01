@@ -488,7 +488,7 @@
   </div>
 
   <script>
-    // === Your Google Apps Script Web App URL ===
+    // === Your Google Apps Script Web App URL (already set to your link) ===
     const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw6myuIEq7h43viSMdsXQ2kVaq8CSI--JqOSZ08DeqkS8CZPh0bdSuVpodkdU11W5UC/exec";
 
     // === 10-QUESTION TEST BANK ===
@@ -656,8 +656,7 @@
         }
 
         // Click behaviour: select row
-        row.addEventListener("click", (e) => {
-          // avoid double toggling from input
+        row.addEventListener("click", () => {
           const rows = document.querySelectorAll(".option-row");
           rows.forEach(r => r.classList.remove("selected"));
           row.classList.add("selected");
